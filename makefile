@@ -1,14 +1,11 @@
 src=$(wildcard *.c)
 obj=$(src:.c=.o)
 
-executable.out:main.o ma_fonction.o
-	gcc -o executable.out main.o ma_fonction.o
+executable.out:$(obj)
+	gcc -o executable.out $(obj)
 
-main.o:main.c
-	gcc main.c -c
-
-ma_fonction.o:ma_fonction.c
-	gcc ma_fonction.c -c
+%.o:%.c
+	gcc $< -c
 
 vars:
 	@echo "src = $(src)"
