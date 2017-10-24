@@ -1,17 +1,21 @@
 src_dir=./src
 build_dir=./build
 inc_dir= ./include
+exec_dir=./exec
+exec_name=executable.out
+
+CFLAGS = -I $(inc_dir)
 
 src=$(wildcard $(src_dir)/*.c)
 obj=$(subst $(src_dir),$(build_dir),$(src:.c=.o))
-trg=executable.out
+trg=$(exec_dir)/$(exec_name)
 
 all:$(trg)
 $(trg):$(obj)
 	gcc -o $@ $(obj)
 
 $(build_dir)/%.o:$(src_dir)/%.c
-	gcc $< -c -o $@ -I $(inc_dir)
+	gcc $< -c -o $@ $(CFLAGS)
 
 vars:
 	@echo "src = $(src)"
@@ -20,4 +24,4 @@ vars:
 
 clean:
 	rm -rf ./$(build_dir)/*.o
-	rm -rf *.out
+	rm -rf ./$(exec_dir)/*.out
