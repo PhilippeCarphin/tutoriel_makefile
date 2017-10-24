@@ -13,7 +13,7 @@ trg=$(exec_dir)/$(exec_name)
 
 all:$(trg)
 $(trg):$(obj)
-	gcc -o $@ $(obj)
+	gcc -o $@ $(obj) -L libphil -l phil
 
 $(build_dir)/%.o:$(src_dir)/%.c
 	gcc $< -c -o $@ $(CFLAGS)
