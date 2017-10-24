@@ -8,7 +8,7 @@ all:$(trg)
 $(trg):$(obj)
 	gcc -o $@ $(obj)
 
-%.o:%.c
+build/%.o:src/%.c
 	gcc $< -c -o $@ -I $(inc_dir)
 
 vars:
