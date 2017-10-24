@@ -3,7 +3,7 @@ build_dir=./build
 inc_dir= ./include
 exec_dir=./exec
 exec_name=executable.out
-lib_dir=./libphil
+lib_dir=../libphil
 lib_inc=$(lib_dir)/include
 lib_name=phil
 
