@@ -1,10 +1,26 @@
-src = $(wildcard *.c)
-obj = $(src:.c=.o)
-all:libphil.a
-libphil.a:$(obj)
-	ar -crs libphil.a $(obj)
-%.o:%.c
-	gcc -c -o $@ $<
+src_dir=./src
+build_dir=./build
+inc_dir= ./include
+lib_dir=./lib
+lib_name=libphil.a
+
+CFLAGS = -I $(inc_dir)
+
+src=$(wildcard $(src_dir)/*.c)
+obj=$(subst $(src_dir),$(build_dir),$(src:.c=.o))
+trg=$(lib_dir)/$(lib_name)
+
+all:$(trg)
+$(trg):$(obj) $(lib_file)
+	ar -crs $(trg) $(obj)
+
+$(build_dir)/%.o:$(src_dir)/%.c
+	gcc $< -c -o $@ $(CFLAGS)
+
+vars:
+	@echo "src = $(src)"
+	@echo "obj = $(obj)"
+	@echo "trg = $(trg)"
 clean:
-	rm -f *.o
-	rm -f *.a
+	rm -rf ./$(build_dir)/*.o
+	rm -rf ./$(lib_dir)/*.a
