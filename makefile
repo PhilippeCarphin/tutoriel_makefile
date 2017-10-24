@@ -3,8 +3,8 @@ build_dir=./build
 inc_dir= ./include
 exec_dir=./exec
 exec_name=executable.out
-lib_inc=./libphil
 lib_dir=./libphil
+lib_inc=$(lib_dir)/include
 lib_name=phil
 
 CFLAGS = -I $(inc_dir) -I $(lib_inc)
