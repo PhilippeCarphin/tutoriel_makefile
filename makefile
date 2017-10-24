@@ -1,8 +1,10 @@
 src=$(wildcard *.c)
 obj=$(src:.c=.o)
+trg=executable.out
 
-executable.out:$(obj)
-	gcc -o executable.out $(obj)
+all:$(trg)
+$(trg):$(obj)
+	gcc -o $@ $(obj)
 
 %.o:%.c
 	gcc $< -c
@@ -10,6 +12,7 @@ executable.out:$(obj)
 vars:
 	@echo "src = $(src)"
 	@echo "obj = $(obj)"
+	@echo "trg = $(trg)"
 
 clean:
 	rm -rf *.o
