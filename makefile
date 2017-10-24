@@ -1,5 +1,6 @@
 src=$(wildcard src/*.c)
-obj=$(src:.c=.o)
+obj_temp=$(src:.c=.o)
+obj=$(subst src,build,$(obj_temp))
 trg=executable.out
 inc_dir= ./include
 
