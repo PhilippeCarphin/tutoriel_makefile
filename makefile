@@ -1,6 +1,5 @@
 src=$(wildcard src/*.c)
-obj_temp=$(src:.c=.o)
-obj=$(subst src,build,$(obj_temp))
+obj=$(subst src,build,$(src:.c=.o))
 trg=executable.out
 inc_dir= ./include
 
@@ -17,5 +16,5 @@ vars:
 	@echo "trg = $(trg)"
 
 clean:
-	rm -rf src/*.o
+	rm -rf build/*.o
 	rm -rf *.out
