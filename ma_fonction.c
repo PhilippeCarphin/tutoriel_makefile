@@ -4,7 +4,7 @@
 
 int ma_fonction(void)
 {
-	printf("ma_fonction() called");
-	printf("ma_fonction() returning");
+	printf("ma_fonction() called\n");
+	printf("ma_fonction() returning\n");
 	return 0;
 }
