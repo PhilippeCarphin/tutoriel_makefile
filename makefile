@@ -8,7 +8,7 @@ lib_inc=$(lib_dir)/include
 lib_name=phil
 
 CFLAGS = -I $(inc_dir) -I $(lib_inc)
-LDFLAGS = -L $(lib_dir) -l $(lib_name)
+LDFLAGS = -L $(lib_dir)/lib -l $(lib_name)
 
 src=$(wildcard $(src_dir)/*.c)
 obj=$(subst $(src_dir),$(build_dir),$(src:.c=.o))
