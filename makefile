@@ -3,8 +3,9 @@ build_dir=./build
 inc_dir= ./include
 exec_dir=./exec
 exec_name=executable.out
+lib_inc=./libphil
 
-CFLAGS = -I $(inc_dir)
+CFLAGS = -I $(inc_dir) -I $(lib_inc)
 
 src=$(wildcard $(src_dir)/*.c)
 obj=$(subst $(src_dir),$(build_dir),$(src:.c=.o))
