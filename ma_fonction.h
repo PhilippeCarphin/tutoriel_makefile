@@ -1,0 +1,1 @@
+int ma_fonction();
