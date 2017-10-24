@@ -7,7 +7,7 @@ $(trg):$(obj)
 	gcc -o $@ $(obj)
 
 %.o:%.c
-	gcc $< -c -o $@
+	gcc $< -c -o $@ -I ./include
 
 vars:
 	@echo "src = $(src)"
