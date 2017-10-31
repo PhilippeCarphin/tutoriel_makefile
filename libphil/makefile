@@ -15,10 +15,8 @@ trg=$(lib_dir)/$(lib_name)
 
 all:$(trg)
 $(trg):$(obj) $(lib_file)
+	@echo '$(shell tput setab 14)$(shell tput setaf 0)Creating library $(trg) from $(obj)$(shell tput sgr 0)'
 	ar -crs $(trg) $(obj)
-
-$(build_dir)/%.o:$(src_dir)/%.c
-	gcc $< -c -o $@ $(CFLAGS)
 
 vars:
 	@echo "src = $(src)"
@@ -27,3 +25,5 @@ vars:
 clean:
 	rm -rf ./$(build_dir)/*.o
 	rm -rf ./$(lib_dir)/*.a
+
+include ../compile.mk
