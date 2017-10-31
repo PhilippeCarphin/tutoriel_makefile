@@ -27,11 +27,16 @@ $(trg):$(lib_file) $(obj)
 	@echo '$(shell tput setab 10)$(shell tput setaf 0)Linking $(obj) to make $(trg)$(shell tput sgr 0)'
 	gcc $(LDFLAGS) -o $@ $(obj) $(LDLIBS)
 
+$(build_dir)/%.o:$(src_dir)/%.c
+	@echo '$(shell tput setab 8)Compiling $< -> $@$(shell tput sgr 0)'
+	gcc $< -c -o $@ $(CFLAGS)
+
 $(lib_file):$(wildcard $(lib_dir)/src/*.c)
 	@echo "$@ <--- $^"
 	@echo '$(shell tput setab 3)Building library$(shell tput sgr 0)'
 	cd $(lib_dir); make
 	@echo '$(shell tput setab 3)Finished building library$(shell tput sgr 0)'
+
 vars:
 	@echo "src = $(src)"
 	@echo "obj = $(obj)"
