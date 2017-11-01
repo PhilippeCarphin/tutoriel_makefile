@@ -12,7 +12,7 @@ lib_location=$(lib_dir)/lib
 lib_name=phil
 
 # Flags de compilation et de linking
-CFLAGS = -I $(inc_dir) -I $(lib_inc)
+CFLAGS = -I $(inc_dir) -I $(lib_inc) -MMD
 LDFLAGS = -L $(lib_location) -l $(lib_name)
 
 # Les listes de fichiers sur lesquels on va faire des choses
@@ -39,3 +39,5 @@ CLEAN:
 clean:
 	rm -rf ./$(build_dir)/*.o
 	rm -rf ./$(exec_dir)/*.out
+
+-include $(build_dir)/*.d
