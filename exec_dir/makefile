@@ -13,7 +13,8 @@ lib_name=phil
 
 # Flags de compilation et de linking
 CFLAGS += -I $(inc_dir) -I $(lib_inc)
-LDFLAGS = -L $(lib_location) -l $(lib_name)
+LDLIBS = -L $(lib_location) -l $(lib_name)
+LDFLAGS = 
 
 # Les listes de fichiers sur lesquels on va faire des choses
 src=$(wildcard $(src_dir)/*.c)
@@ -24,7 +25,7 @@ lib_file=$(lib_location)/lib$(lib_name).a
 all:$(trg)
 $(trg):$(obj) $(lib_file)
 	@echo '$(shell tput setab 10)$(shell tput setaf 0)compiling $(trg) from $(obj)$(shell tput sgr 0)'
-	gcc -o $@ $(obj) $(LDFLAGS)
+	gcc $(LDFLAGS) -o $@ $(obj) $(LDLIBS)
 
 $(lib_file):$(wildcard $(lib_dir)/src/*.c)
 	@echo "$@ <--- $^"
