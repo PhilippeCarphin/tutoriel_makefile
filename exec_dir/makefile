@@ -24,7 +24,7 @@ lib_file=$(lib_location)/lib$(lib_name).a
 
 all:$(trg)
 $(trg):$(lib_file) $(obj)
-	@echo '$(shell tput setab 10)$(shell tput setaf 0)compiling $(trg) from $(obj)$(shell tput sgr 0)'
+	@echo '$(shell tput setab 10)$(shell tput setaf 0)Linking $(obj) to make $(trg)$(shell tput sgr 0)'
 	gcc $(LDFLAGS) -o $@ $(obj) $(LDLIBS)
 
 $(lib_file):$(wildcard $(lib_dir)/src/*.c)
